@@ -117,6 +117,8 @@
                     if (data.message) {
                         alert(data.message);
                         window.location.href = data.redirect || 'user_dashboard.php';
+=======
+                        this.reset();
                     } else if (data.detail) {
                         alert(data.detail);
                     }
