@@ -1,0 +1,10 @@
+@import url('./style.css');
+.register-container{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.register-form .card{padding:24px}
+.register-info{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:20px}
+.register-info ul{margin:10px 0 0 0}
+.register-info li{margin:6px 0}
+@media(max-width:900px){.register-container{grid-template-columns:1fr}}
+.back-link{margin-top:20px}
+.back-link a{color:#cdd7ee;text-decoration:none}
+.back-link a:hover{text-decoration:underline}

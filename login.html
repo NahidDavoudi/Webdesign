@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ورود | آموزشگاه فامو</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./assets/register.css" />
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#"><img src="./logo.png" alt="لوگوی آموزشگاه فامو"></a>
+                <h1>فامو <span>آکادمی</span></h1>
+            </div>
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="register.html">ثبت نام</a></li>
+                    <li><a href="login.html">ورود</a></li>
+                    <li><a href="index.html#contact">تماس با ما</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="section" id="login">
+        <div class="container">
+            <div class="section-title">
+                <h2>ورود به حساب</h2>
+                <p>شماره موبایل خود را وارد کنید</p>
+            </div>
+
+            <div class="register-container">
+                <div class="register-form">
+                    <div class="card">
+                        <form id="loginForm">
+                            <input type="hidden" name="csrf_token" id="csrf_token" />
+                            <div class="form-group" style="direction: rtl;">
+                                <label for="phone_number" style="direction: rtl;">شماره تماس</label>
+                                <input type="tel" id="phone_number" name="phone_number" required placeholder="مثال: 09123456789" style="direction: rtl;" autocomplete="tel">
+                            </div>
+                            <div class="form-submit">
+                                <button type="submit" class="btn">ورود</button>
+                            </div>
+                        </form>
+                        <div class="back-link" style="margin-top:12px">
+                            <a href="register.html"><i class="fas fa-user-plus"></i> هنوز ثبت نام نکرده‌اید؟ ثبت نام</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="register-info">
+                    <h3>چرا ورود با شماره؟</h3>
+                    <p>در نسخه فعلی برای سادگی، ورود با شماره تماس انجام می‌شود. در محیط عملیاتی، پیشنهاد می‌شود از ورود پیامکی (OTP) استفاده شود.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('mainMenu');
+        mobileBtn.addEventListener('click', () => { nav.classList.toggle('show'); });
+        document.querySelectorAll('nav ul li a').forEach(link => link.addEventListener('click', () => nav.classList.remove('show')));
+
+        async function fetchCsrf() {
+            const res = await fetch('login.php?action=csrf', { credentials: 'same-origin' });
+            const data = await res.json();
+            document.getElementById('csrf_token').value = data.csrf_token || '';
+        }
+        fetchCsrf();
+
+        document.getElementById('loginForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('login.php', { method: 'POST', body: formData, credentials: 'same-origin' })
+            .then(r => r.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message + (data.full_name ? ('\n' + data.full_name) : ''));
+                    window.location.href = 'index.html';
+                } else {
+                    alert(data.detail || 'خطای نامشخص');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
+            });
+        });
+    </script>
+</body>
+</html>
