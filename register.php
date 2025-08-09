@@ -1,9 +1,20 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=utf-8");
 
-// اصلاح مسیر فایل config
-require_once 'config.php';
+$allowed_origin = getenv('CORS_ALLOW_ORIGIN') ?: '';
+if ($allowed_origin !== '') {
+    header("Access-Control-Allow-Origin: {$allowed_origin}");
+    header('Vary: Origin');
+}
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
+require_once __DIR__ . '/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -11,9 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// اصلاح نام فیلدها
-$full_name = trim($_POST['full_name'] ?? '');
-$phone     = trim($_POST['phone_number'] ?? '');
+$full_name = isset($_POST['full_name']) ? trim((string)$_POST['full_name']) : '';
+$phone     = isset($_POST['phone_number']) ? trim((string)$_POST['phone_number']) : '';
+
+$full_name = preg_replace('/\s+/u', ' ', $full_name);
+$phone     = preg_replace('/[^0-9+]/', '', $phone);
 
 if ($full_name === '' || $phone === '') {
     http_response_code(400);
@@ -21,12 +34,24 @@ if ($full_name === '' || $phone === '') {
     exit;
 }
 
+if (mb_strlen($full_name) < 3 || mb_strlen($full_name) > 100) {
+    http_response_code(400);
+    echo json_encode(['detail' => 'طول نام معتبر نیست']);
+    exit;
+}
+
+if (!preg_match('/^\+?\d{10,15}$/', $phone)) {
+    http_response_code(400);
+    echo json_encode(['detail' => 'فرمت شماره تماس معتبر نیست']);
+    exit;
+}
+
 try {
     $stmt = $pdo->prepare("SELECT id FROM users WHERE phone_number = :phone LIMIT 1");
     $stmt->execute([':phone' => $phone]);
 
-    if ($stmt->fetch(PDO::FETCH_ASSOC)) {
-        http_response_code(400);
+    if ($stmt->fetch()) {
+        http_response_code(409);
         echo json_encode(['detail' => 'این شماره قبلاً ثبت شده']);
         exit;
     }
@@ -42,6 +67,7 @@ try {
     ]);
 
 } catch (PDOException $e) {
+    error_log('Database error in register.php: ' . $e->getMessage());
     http_response_code(500);
-    echo json_encode(['detail' => 'خطا در ثبت اطلاعات: ' . $e->getMessage()]);
+    echo json_encode(['detail' => 'خطا در ثبت اطلاعات']);
 }
