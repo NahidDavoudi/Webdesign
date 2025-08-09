@@ -1,8 +1,8 @@
 <?php
-$host = getenv('DB_HOST') ?: '';
-$db   = getenv('DB_NAME') ?: '';
-$user = getenv('DB_USER') ?: '';
-$pass = getenv('DB_PASS') ?: '';
+$host = getenv('DB_HOST') ?: 'localhost';
+$db   = getenv('DB_NAME') ?: 'famoacad_mein';
+$user = getenv('DB_USER') ?: 'famoacad_davoudi';
+$pass = getenv('DB_PASS') ?: 'XATjm6;]PCm3K*]z';
 $dsn  = "mysql:host={$host};dbname={$db};charset=utf8mb4";
 
 if ($host === '' || $db === '' || $user === '' || $pass === '') {
@@ -22,3 +22,4 @@ try {
     http_response_code(500);
     die("خطا در اتصال به دیتابیس.");
 }
+
