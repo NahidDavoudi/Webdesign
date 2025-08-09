@@ -100,37 +100,26 @@
         // Form submission handling
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form values
-            const fullName = document.getElementById('full_Name').value;
-            const course = document.getElementById('phone_number').value;
-            
-            // اصلاح اسکریپت ارسال فرم
-            document.getElementById('registrationForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-                const formData = new FormData(this);
 
-                fetch('register.php', {
-                    method: 'POST',
-                    body: formData
+            const formData = new FormData(this);
+
+            fetch('register.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        this.reset();
+                    } else if (data.detail) {
+                        alert(data.detail);
+                    }
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.message) {
-                            alert(data.message);
-                            this.reset();
-                        } else if (data.detail) {
-                            alert(data.detail);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
-                    });
-            });
-            
-            // Reset form
-            this.reset();
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
+                });
         });
     </script>
 </body>
