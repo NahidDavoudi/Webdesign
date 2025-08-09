@@ -83,7 +83,7 @@
             .then(data => {
                 if (data.message) {
                     alert(data.message + (data.full_name ? ('\n' + data.full_name) : ''));
-                    window.location.href = 'index.html';
+                    window.location.href = data.redirect || (data.is_admin ? 'admin_dashboard.php' : 'user_dashboard.php');
                 } else {
                     alert(data.detail || 'خطای نامشخص');
                 }

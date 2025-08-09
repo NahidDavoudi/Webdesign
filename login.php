@@ -67,7 +67,7 @@ if (!preg_match('/^\+?\d{10,15}$/', $phone)) {
 }
 
 try {
-    $stmt = $pdo->prepare('SELECT id, full_name FROM users WHERE phone_number = :phone LIMIT 1');
+    $stmt = $pdo->prepare('SELECT id, full_name, phone_number FROM users WHERE phone_number = :phone LIMIT 1');
     $stmt->execute([':phone' => $phone]);
     $user = $stmt->fetch();
 
@@ -77,13 +77,20 @@ try {
         exit;
     }
 
+    // Determine admin by environment list of phone numbers
+    $adminPhones = array_filter(array_map('trim', explode(',', getenv('ADMIN_PHONES') ?: '')));
+    $isAdmin = in_array($user['phone_number'], $adminPhones, true);
+
     $_SESSION['user_id'] = (int)$user['id'];
     $_SESSION['full_name'] = (string)$user['full_name'];
+    $_SESSION['is_admin'] = $isAdmin;
 
     echo json_encode([
         'message' => 'ورود با موفقیت انجام شد',
         'user_id' => (int)$user['id'],
-        'full_name' => (string)$user['full_name']
+        'full_name' => (string)$user['full_name'],
+        'is_admin' => $isAdmin,
+        'redirect' => $isAdmin ? 'admin_dashboard.php' : 'user_dashboard.php'
     ]);
 } catch (PDOException $e) {
     error_log('Database error in login.php: ' . $e->getMessage());
