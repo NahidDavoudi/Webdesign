@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ثبت نام | آموزشگاه فامو بابل</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./assets/register.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#"><img src="./logo.png" alt="لوگوی آموزشگاه فامو"></a>
+                <h1>فامو <span>آکادمی</span></h1>
+            </div>
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="index.html#courses">دوره‌ها</a></li>
+                    <li><a href="index.html#instructors">اساتید</a></li>
+                    <li><a href="index.html#features">خدمات</a></li>
+                    <li><a href="index.html#contact">تماس با ما</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <section class="section" id="register">
+        <div class="container">
+            <div class="section-title">
+                <h2>ثبت نام در دوره‌های آموزشگاه فامو</h2>
+                <p>فرم زیر را با دقت پر کنید تا همکاران ما در اولین فرصت با شما تماس بگیرند</p>
+            </div>
+            
+            <div class="register-container">
+                <div class="register-form">
+                    <form id="registrationForm">
+                        <!-- اصلاح نام فیلدها -->
+                        <div class="form-group">
+                            <label for="full_name">نام و نام خانوادگی</label>
+                            <input type="text" id="full_name" name="full_name" required placeholder="نام و نام خانوادگی خود را وارد کنید">
+                        </div>
+                        <div class="form-group" style="direction: rtl;">
+                            <label for="phone_number" style="direction: rtl;">شماره تماس</label>
+                            <input type="tel" id="phone_number" name="phone_number" required placeholder="شماره تماس خود را وارد کنید"
+                                style="direction: rtl;">
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="btn">ارسال درخواست ثبت نام</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="register-info">
+                    <h3>مزایای ثبت نام در آموزشگاه فامو</h3>
+                    <p>با ثبت نام در آموزشگاه فامو از خدمات ویژه ما بهره‌مند شوید:</p>
+                    
+                    <ul>
+                        <li>برنامه‌ریزی شخصی‌سازی شده برای هر دانش‌آموز</li>
+                        <li>آزمون‌های منظم و تحلیل پیشرفت تحصیلی</li>
+                        <li>کلاس‌های رفع اشکال تک‌تک دروس</li>
+                        <li>پشتیبانی ۲۴ ساعته درسی</li>
+                    </ul>
+                </div>
+            </div>
+            
+            </div>
+            
+            <div class="back-link">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> بازگشت به صفحه اصلی</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('mainMenu');
+        
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('show');
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('full_Name').value;
+            const course = document.getElementById('phone_number').value;
+            
+            // اصلاح اسکریپت ارسال فرم
+            document.getElementById('registrationForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+
+                fetch('register.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                            this.reset();
+                        } else if (data.detail) {
+                            alert(data.detail);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
+                    });
+            });
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
