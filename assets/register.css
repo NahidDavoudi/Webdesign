@@ -1,10 +1,265 @@
 @import url('./style.css');
-.register-container{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
-.register-form .card{padding:24px}
-.register-info{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:20px}
-.register-info ul{margin:10px 0 0 0}
-.register-info li{margin:6px 0}
-@media(max-width:900px){.register-container{grid-template-columns:1fr}}
-.back-link{margin-top:20px}
-.back-link a{color:#cdd7ee;text-decoration:none}
-.back-link a:hover{text-decoration:underline}
+
+/* Registration form specific styles */
+.register-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.register-form {
+    background: var(--bg-2);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.register-form .card {
+    padding: var(--spacing-2xl);
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.register-form .card::before {
+    display: none;
+}
+
+.register-form h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text);
+    text-align: center;
+}
+
+.register-form .form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.register-form label {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--spacing-xs);
+    display: block;
+}
+
+.register-form input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    background: var(--bg-2);
+}
+
+.register-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    outline: none;
+}
+
+.register-form input:invalid:not(:placeholder-shown) {
+    border-color: var(--danger);
+}
+
+.register-form input:valid:not(:placeholder-shown) {
+    border-color: var(--success);
+}
+
+.register-form .btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-top: var(--spacing-lg);
+}
+
+/* Registration info sidebar */
+.register-info {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    position: sticky;
+    top: 100px;
+    box-shadow: var(--shadow-lg);
+}
+
+.register-info h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.register-info p {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.register-info ul {
+    list-style: none;
+    margin: var(--spacing-lg) 0;
+    padding: 0;
+}
+
+.register-info li {
+    margin-bottom: var(--spacing-md);
+    padding-right: var(--spacing-lg);
+    position: relative;
+    line-height: 1.6;
+}
+
+.register-info li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--success-light);
+    font-weight: bold;
+    font-size: var(--font-size-lg);
+}
+
+/* Back link styles */
+.back-link {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.back-link a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-fast);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.back-link a:hover,
+.back-link a:focus {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+/* Form validation feedback */
+.form-feedback {
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.form-feedback.error {
+    color: var(--danger);
+}
+
+.form-feedback.success {
+    color: var(--success);
+}
+
+.form-feedback i {
+    font-size: var(--font-size-sm);
+}
+
+/* Loading state for form */
+.form-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.form-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .register-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+    
+    .register-info {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .register-form .card {
+        padding: var(--spacing-xl);
+    }
+    
+    .register-info {
+        padding: var(--spacing-xl);
+    }
+    
+    .register-form h2 {
+        font-size: var(--font-size-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .register-form .card {
+        padding: var(--spacing-lg);
+    }
+    
+    .register-info {
+        padding: var(--spacing-lg);
+    }
+    
+    .register-form .btn {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Animation for form elements */
+.register-form .form-group {
+    animation: slideInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.register-form .form-group:nth-child(1) { animation-delay: 0.1s; }
+.register-form .form-group:nth-child(2) { animation-delay: 0.2s; }
+.register-form .form-group:nth-child(3) { animation-delay: 0.3s; }
+.register-form .form-group:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Success animation */
+.form-success {
+    animation: successPulse 0.6s ease;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
