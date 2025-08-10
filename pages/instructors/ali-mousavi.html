@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مهندس علی موسوی | اساتید | فامو</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+<header>
+  <div class="container header-container">
+    <div class="logo">
+      <a href="../../index.html"><img src="../../logo.png" alt="فامو"></a>
+      <h1>فامو <span>آکادمی</span></h1>
+    </div>
+    <nav>
+      <ul id="mainMenu">
+        <li><a href="../../index.html#instructors">بازگشت به اساتید</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+<main class="section">
+  <div class="container">
+    <div class="card">
+      <img class="image-cover" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1600&auto=format&fit=crop" alt="علی موسوی" />
+      <h2 style="margin-top:12px">مهندس علی موسوی</h2>
+      <p class="teaser">مدرس ریاضی با تمرکز بر حل مسأله و درک عمیق مفاهیم</p>
+      <h3>مسیر و تخصص</h3>
+      <p>تجربه تدریس در سطوح مختلف کنکور و المپیاد؛ تمرکز بر شکستن مسائل پیچیده به گام‌های ساده و قابل فهم.</p>
+      <h3>روش تدریس</h3>
+      <p>استفاده از مثال‌های متنوع، تمرین‌های زمان‌دار و تکنیک‌های مدیریت زمان برای ارتقای عملکرد.</p>
+      <h3>نمونه سرفصل‌ها</h3>
+      <ul>
+        <li>ترکیبیات کاربردی</li>
+        <li>هندسه تحلیلی پیشرفته</li>
+        <li>دیفرانسیل و انتگرال مفهومی</li>
+      </ul>
+      <div style="margin-top:16px">
+        <a class="btn" href="../../register.html">ثبت نام در دوره ریاضی</a>
+        <a class="btn btn-secondary" href="../../index.html#instructors">بازگشت</a>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+const mobileBtn=document.getElementById('mobileMenuBtn');
+const nav=document.getElementById('mainMenu');
+mobileBtn?.addEventListener('click',()=>nav.classList.toggle('show'));
+document.querySelectorAll('nav ul li a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('show')));
+</script>
+</body>
+</html>

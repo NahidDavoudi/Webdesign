@@ -48,6 +48,7 @@
                 <ul id="mainMenu">
                     <li><a href="#home">خانه</a></li>
                     <li><a href="register.html">ثبت نام</a></li>
+                    <li><a href="login.html">ورود</a></li>
                     <li><a href="#courses">دوره‌ها</a></li>
                     <li><a href="#instructors">اساتید</a></li>
                     <li><a href="#support">پشتیبانان</a></li>
@@ -63,7 +64,7 @@
     </header>
 
     <main>
-        <section class="hero" id="home">
+        <section class="hero reveal fade-up" id="home">
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
@@ -84,102 +85,88 @@
             </div>
         </section>
 
-        <section class="section courses" id="courses">
+        <section class="section courses reveal fade-up" id="courses">
             <div class="container">
                 <div class="section-title">
                     <h2>دوره‌های تخصصی فامو</h2>
+                    <p>برای هر رشته یک برنامه‌ی هدفمند با محتوای به‌روز و اساتید برجسته</p>
                 </div>
-                <div class="courses-grid">
-                    <article class="course-card">
-                        <div class="course-image bg-blue-dark"><i class="fas fa-flask"></i></div>
+                <div class="grid grid-3">
+                    <article class="course-card card">
+                        <img class="image-cover" loading="lazy" src="https://images.unsplash.com/photo-1606166325695-c3b9dea8b13b?q=80&w=1200&auto=format&fit=crop" alt="علوم تجربی">
                         <div class="course-content">
                             <h3>رشته علوم تجربی</h3>
-                            <p>آموزش مفهومی زیست، شیمی و فیزیک با اساتید مجرب و منابع به‌روز.</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> پشتیبانی اختصاصی درسی</li>
-                                <li><i class="fas fa-check-circle"></i> آزمون‌های هفتگی استاندارد</li>
-                                <li><i class="fas fa-check-circle"></i> رفع اشکال تک‌تک دروس</li>
-                            </ul>
-                            <div>
-                                <span class="course-price">هزینه ترم: ۳,۰۰۰,۰۰۰ تومان</span>
-                                <a href="register.html" class="btn" aria-label="ثبت نام علوم تجربی">ثبت نام</a>
+                            <p class="teaser">زیست، شیمی و فیزیک با تمرکز بر حل مسئله و یادگیری مفهومی.</p>
+                            <span class="badge">ترم: ۳,۰۰۰,۰۰۰ تومان</span>
+                            <div style="margin-top:10px">
+                                <a href="pages/courses/experimental.html" class="read-more">مطالعه بیشتر</a>
                             </div>
                         </div>
                     </article>
-                    <article class="course-card">
-                        <div class="course-image bg-blue-light"><i class="fas fa-square-root-alt"></i></div>
+                    <article class="course-card card">
+                        <img class="image-cover" loading="lazy" src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200&auto=format&fit=crop" alt="ریاضی فیزیک">
                         <div class="course-content">
                             <h3>رشته ریاضی فیزیک</h3>
-                            <p>تقویت پایه ریاضی و فیزیک با تمرکز بر مباحث کنکوری و پیشرفته.</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> حل مسائل کاربردی</li>
-                                <li><i class="fas fa-check-circle"></i> مشاوره تخصصی تحصیلی</li>
-                                <li><i class="fas fa-check-circle"></i> کلاس‌های خصوصی انتخابی</li>
-                            </ul>
-                            <div>
-                                <span class="course-price">هزینه ترم: ۳,۰۰۰,۰۰۰ تومان</span>
-                                <a href="register.html" class="btn" aria-label="ثبت نام ریاضی">ثبت نام</a>
+                            <p class="teaser">مهارت‌های حل مسأله، نکات طلایی کنکور و تمرین‌های هدفمند.</p>
+                            <span class="badge">ترم: ۳,۰۰۰,۰۰۰ تومان</span>
+                            <div style="margin-top:10px">
+                                <a href="pages/courses/math.html" class="read-more">مطالعه بیشتر</a>
                             </div>
                         </div>
                     </article>
-                    <article class="course-card">
-                        <div class="course-image bg-navy"><i class="fas fa-book-open"></i></div>
+                    <article class="course-card card">
+                        <img class="image-cover" loading="lazy" src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1200&auto=format&fit=crop" alt="علوم انسانی">
                         <div class="course-content">
                             <h3>رشته علوم انسانی</h3>
-                            <p>آموزش تخصصی دروس فلسفه، منطق، ادبیات و علوم اجتماعی.</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> تحلیل مفهومی متون</li>
-                                <li><i class="fas fa-check-circle"></i> کارگاه‌های مهارت‌افزایی</li>
-                                <li><i class="fas fa-check-circle"></i> مشاوره روانشناسی تحصیلی</li>
-                            </ul>
-                            <div>
-                               <span class="course-price">هزینه ترم: ۳,۰۰۰,۰۰۰ تومان</span>
-                               <a href="register.html" class="btn" aria-label="ثبت نام انسانی">ثبت نام</a>
+                            <p class="teaser">فلسفه، منطق و ادبیات با رویکرد تحلیل متون و آزمون‌محور.</p>
+                            <span class="badge">ترم: ۳,۰۰۰,۰۰۰ تومان</span>
+                            <div style="margin-top:10px">
+                                <a href="pages/courses/humanities.html" class="read-more">مطالعه بیشتر</a>
                             </div>
-                        </div>
-                    </article>
-                    <article class="course-card">
-                        <div class="course-image bg-slate"><i class="fas fa-star"></i></div>
-                        <div class="course-content">
-                            <h3>آمادگی تیزهوشان</h3>
-                            <p>دوره ویژه دانش‌آموزان مستعد برای آزمون‌های ورودی مدارس برتر.</p>
-                            <ul>
-                                <li><i class="fas fa-check-circle"></i> برنامه‌ریزی شخصی‌سازی شده</li>
-                                <li><i class="fas fa-check-circle"></i> حل نمونه سوالات سال‌های قبل</li>
-                                <li><i class="fas fa-check-circle"></i> کلاس‌های فشرده و خصوصی</li>
-                            </ul>
-                           <div>
-                                <span class="course-price">هزینه ترم: ۳,۰۰۰,۰۰۰ تومان</span>
-                                <a href="register.html" class="btn" aria-label="ثبت نام تیزهوشان">ثبت نام</a>
-                           </div>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section instructors" id="instructors">
+        <section class="section instructors reveal fade-up" id="instructors">
             <div class="container">
                 <div class="section-title">
                     <h2>اساتید برجسته فامو</h2>
+                    <p>با تجربه‌ی کاری و تحصیلات مرتبط، همراه مسیر یادگیری شما</p>
                 </div>
-                <div class="swiper team-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-blue-dark"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>دکتر محمد موسوی</h3><span class="subject">مشاور تخصصی تحصیلی</span><p>بنیان‌گذار و مدیر آموزشگاه فامو با سال‌ها تجربه در مشاوره تحصیلی.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-blue-light"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>مهندس علی موسوی</h3><span class="subject">مدرس ریاضی</span><p>مدرس تخصصی ریاضیات کنکور با سابقه درخشان در تدریس مفهومی.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-navy"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>دکتر اسماعیل حاجیان</h3><span class="subject">مدرس فیزیک</span><p>دانشجوی پزشکی و مدرس با تجربه کنکور با تمرکز بر حل مسائل پیچیده.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-slate"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>استاد رضا نصرالله زاده</h3><span class="subject">مدرس شیمی</span><p>مدرس تخصصی شیمی کنکور با روش‌های نوین آموزشی.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-cyan"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>دکتر مانی محسنی</h3><span class="subject">مدرس زیست</span><p>دانشجوی پزشکی و مدرس زیست‌شناسی کنکور با تسلط کامل بر مفاهیم ترکیبی.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-indigo"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>استاد رضا رحمان زاده</h3><span class="subject">مدرس ادبیات</span><p>کارشناس ارشد ادبیات و مدرس تخصصی کنکور.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-teal"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>دکتر فاطمه میریان</h3><span class="subject">مدرس زبان</span><p>دانشجوی پزشکی دارای تجربه ای عالی در آموزش زبان انگلیسی و متخصص آزمون‌های زبان کنکور.</p><div class="social-links"></div></div></div></div>
-                        <div class="swiper-slide"><div class="instructor-card"><div class="instructor-image bg-charcoal"><i class="fas fa-user-graduate"></i></div><div class="instructor-info"><h3>استاد محمد میر حسینی</h3><span class="subject">مدرس هوش و استعداد</span><p>مدرس تخصصی هوش و استعداد تحصیلی برای آزمون‌های سمپاد.</p><div class="social-links"></div></div></div></div>
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
+                <div class="grid grid-3">
+                    <article class="instructor-card card">
+                        <img class="image-cover" loading="lazy" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="دکتر محمد موسوی">
+                        <div class="instructor-info">
+                            <h3>دکتر محمد موسوی</h3>
+                            <span class="subject">مشاور تخصصی تحصیلی</span>
+                            <p class="teaser">طراحی مسیر یادگیری شخصی‌سازی شده بر اساس نقاط قوت و ضعف.</p>
+                            <a class="read-more" href="pages/instructors/mohammad-mousavi.html">مطالعه بیشتر</a>
+                        </div>
+                    </article>
+                    <article class="instructor-card card">
+                        <img class="image-cover" loading="lazy" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1200&auto=format&fit=crop" alt="مهندس علی موسوی">
+                        <div class="instructor-info">
+                            <h3>مهندس علی موسوی</h3>
+                            <span class="subject">مدرس ریاضی</span>
+                            <p class="teaser">تدریس شهودی ریاضی با تمرکز بر مهارت حل مسأله.</p>
+                            <a class="read-more" href="pages/instructors/ali-mousavi.html">مطالعه بیشتر</a>
+                        </div>
+                    </article>
+                    <article class="instructor-card card">
+                        <img class="image-cover" loading="lazy" src="https://images.unsplash.com/photo-1554774853-b415df9eeb92?q=80&w=1200&auto=format&fit=crop" alt="دکتر اسماعیل حاجیان">
+                        <div class="instructor-info">
+                            <h3>دکتر اسماعیل حاجیان</h3>
+                            <span class="subject">مدرس فیزیک</span>
+                            <p class="teaser">یادگیری فیزیک با مثال‌های واقعی و تمرین‌های سطح‌بندی‌شده.</p>
+                            <a class="read-more" href="#">مطالعه بیشتر</a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
+
         <section class="section support" id="support">
             <div class="container">
                 <div class="section-title">
@@ -197,7 +184,7 @@
             </div>
         </section>
 
-        <section class="section features" id="features">
+        <section class="section features reveal fade-up" id="features">
             <div class="container">
                 <div class="section-title">
                     <h2>خدمات ویژه آموزشگاه فامو</h2>
@@ -205,22 +192,22 @@
                 <div class="features-grid">
                     <div class="feature-card"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3>پشتیبانی ۲۴ ساعته</h3><p>پاسخگویی به سوالات درسی دانش‌آموزان در تمامی ساعات شبانه‌روز.</p></div>
                     <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>آزمون‌های هفتگی</h3><p>برگزاری آزمون‌های استاندارد با تحلیل پیشرفت فردی هر دانش‌آموز.</p></div>
-                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-user-friends"></i></div><h3>کلاس‌های خصوصی</h3><p>برگزاری جلسات خصوصی برای رفع اشکال تک‌تک دروس با هماهنگی قبلی.</p></div>
-                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-book"></i></div><h3>مشاوره تخصصی</h3><p>برنامه‌ریزی تحصیلی شخصی‌سازی شده توسط مشاوران خبره و رتبه‌های برتر.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-user-friends"></i></div><h3>کلاس‌های خصوصی</h3><p>جلسات خصوصی برای رفع اشکال تک‌تک دروس با هماهنگی قبلی.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><i class="fas fa-book"></i></div><h3>مشاوره تخصصی</h3><p>برنامه‌ریزی تحصیلی شخصی‌سازی شده توسط مشاوران خبره.</p></div>
                 </div>
             </div>
         </section>
 
-        <section class="section gallery" id="gallery">
+        <section class="section gallery reveal fade-up" id="gallery">
             <div class="container">
                 <div class="section-title">
                     <h2>گالری آموزشگاه فامو</h2>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item"><img src="" alt="کلاس درس ریاضی"><div class="gallery-overlay"><h4>کلاس درس ریاضی</h4><p>تدریس توسط استاد موسوی</p></div></div>
-                    <div class="gallery-item"><img src="" alt="کارگاه آموزشی"><div class="gallery-overlay"><h4>کارگاه آموزشی</h4><p>جلسه حل تمرین گروهی</p></div></div>
-                    <div class="gallery-item"><img src="" alt="مشاوره تحصیلی"><div class="gallery-overlay"><h4>مشاوره تحصیلی</h4><p>جلسه مشاوره فردی</p></div></div>
-                    <div class="gallery-item"><img src="" alt="آزمون آزمایشی"><div class="gallery-overlay"><h4>آزمون آزمایشی</h4><p>برگزاری آزمون‌های منظم</p></div></div>
+                    <div class="gallery-item"><img loading="lazy" src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop" alt="کلاس درس ریاضی"><div class="gallery-overlay"><h4>کلاس درس ریاضی</h4><p>تدریس توسط استاد موسوی</p></div></div>
+                    <div class="gallery-item"><img loading="lazy" src="https://images.unsplash.com/photo-1518133927612-7d3fdc4e2d96?q=80&w=1200&auto=format&fit=crop" alt="کارگاه آموزشی"><div class="gallery-overlay"><h4>کارگاه آموزشی</h4><p>جلسه حل تمرین گروهی</p></div></div>
+                    <div class="gallery-item"><img loading="lazy" src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1200&auto=format&fit=crop" alt="مشاوره تحصیلی"><div class="gallery-overlay"><h4>مشاوره تحصیلی</h4><p>جلسه مشاوره فردی</p></div></div>
+                    <div class="gallery-item"><img loading="lazy" src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?q=80&w=1200&auto=format&fit=crop" alt="آزمون آزمایشی"><div class="gallery-overlay"><h4>آزمون آزمایشی</h4><p>برگزاری آزمون‌های منظم</p></div></div>
                 </div>
             </div>
         </section>
@@ -233,7 +220,7 @@
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><h4>آدرس آموزشگاه</h4><p>بابل، میدان باغ فردوس، جنب بیمارستان بابل کلینیک، مدرسه بهارستان</p></div></div>
                     <div class="contact-item"><i class="fas fa-phone-alt"></i><div><h4>شماره تماس</h4><p>0901-440-2300</p></div></div>
                     <div class="contact-item"><i class="fas fa-envelope"></i><div><h4>ایمیل</h4><p>info@famoacademy.ir</p></div></div>
-                    <div class="contact-item"><i class="fab fa-telegram"></i><div><h4>تلگرام</h4><p><a href="https://t.me/famoacademy" style="color: #fff;">famoacademy@</a></p></div></div>
+                    <div class="contact-item"><i class="fab fa-telegram"></i><div><h4>تلگرام</h4><p><a href="https://t.me/famoacademy" style="color: inherit;">famoacademy@</a></p></div></div>
                 </div>
                 <div class="map">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d801.2335882526163!2d52.67319986960231!3d36.55569577555036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8f8964bbcf67ed%3A0x457a58444725e3fe!2z2K_YqNuM2LHYs9iq2KfZhiDYutuM2LEg2KfZhtiq2YHYp9i524wg2K_Yrtiq2LHYp9mG2Ycg2KjZh9in2LHYs9iq2KfZhg!5e0!3m2!1sen!2sus!4v1752763163495!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="نقشه آموزشگاه فامو"></iframe>
@@ -306,7 +293,7 @@
             }
             // --- Intersection Observer for Stats Counter ---
             const statsSection = document.querySelector('.stats');
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observerStats = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         animateCounter(document.getElementById('years-counter'), 5);
@@ -317,34 +304,18 @@
                     }
                 });
             }, { threshold: 0.5 });
-            observer.observe(statsSection);
+            observerStats.observe(statsSection);
 
-            // --- Swiper Initializations ---
-            const teamSliderOptions = {
-                loop: true,
-                grabCursor: true,
-                spaceBetween: 30,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    0: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 },
-                    992: { slidesPerView: 3 },
-                    1200: { slidesPerView: 4 }
-                }
-            };
-
-            const instructorsSwiper = new Swiper('.instructors .team-slider', teamSliderOptions);
-            const supportSwiper = new Swiper('.support .team-slider', {
-                ...teamSliderOptions,
-                navigation: {}, // Support slider has no next/prev buttons
-            });
+            // --- Reveal on scroll ---
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
             // --- Dynamic Copyright Year ---
             function getPersianYear() {

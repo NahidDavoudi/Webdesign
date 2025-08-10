@@ -14,6 +14,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
+$secure = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => '',
+    'secure' => $secure,
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+session_start();
+
+=======
 require_once __DIR__ . '/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -59,11 +71,17 @@ try {
     $insert = $pdo->prepare("INSERT INTO users (full_name, phone_number) VALUES (:name, :phone)");
     $insert->execute([':name' => $full_name, ':phone' => $phone]);
 
+    $userId = (int)$pdo->lastInsertId();
+
+    // Auto-login after registration
+    $_SESSION['user_id'] = $userId;
+    $_SESSION['full_name'] = $full_name;
+
     http_response_code(201);
     echo json_encode([
         'message' => 'ثبت نام با موفقیت انجام شد',
-        'user_id' => (int)$pdo->lastInsertId(),
-        'next_step' => 'همکاران ما ظرف 24 ساعت با شما تماس خواهند گرفت'
+        'user_id' => $userId,
+        'redirect' => 'user_dashboard.php'
     ]);
 
 } catch (PDOException $e) {

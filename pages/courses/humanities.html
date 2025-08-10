@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>دوره علوم انسانی | فامو</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+<header>
+  <div class="container header-container">
+    <div class="logo">
+      <a href="../../index.html"><img src="../../logo.png" alt="فامو"></a>
+      <h1>فامو <span>آکادمی</span></h1>
+    </div>
+    <nav>
+      <ul id="mainMenu">
+        <li><a href="../../index.html#courses">بازگشت به دوره‌ها</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+<main class="section">
+  <div class="container">
+    <div class="card">
+      <img class="image-cover" src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="علوم انسانی" />
+      <h2 style="margin-top:12px">دوره علوم انسانی</h2>
+      <p class="teaser">فلسفه، منطق و ادبیات با تمرکز بر تحلیل و نگارش</p>
+      <h3>آنچه یاد می‌گیرید</h3>
+      <ul>
+        <li>تحلیل مفهومی متون و نگارش استدلالی</li>
+        <li>منطق کاربردی برای آزمون</li>
+        <li>ادبیات فارسی و آرایه‌های ادبی</li>
+      </ul>
+      <h3>مدت و شهریه</h3>
+      <p>۱۲ هفته؛ ترم: ۳,۰۰۰,۰۰۰ تومان</p>
+      <div style="margin-top:16px">
+        <a class="btn" href="../../register.html">ثبت نام</a>
+        <a class="btn btn-secondary" href="../../index.html#courses">بازگشت</a>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+const mobileBtn=document.getElementById('mobileMenuBtn');
+const nav=document.getElementById('mainMenu');
+mobileBtn?.addEventListener('click',()=>nav.classList.toggle('show'));
+document.querySelectorAll('nav ul li a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('show')));
+</script>
+</body>
+</html>
