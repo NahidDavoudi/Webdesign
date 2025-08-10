@@ -49,3 +49,5 @@ input[type=text]:focus,input[type=tel]:focus,input[type=password]:focus{border-c
 .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:992px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.grid-3{grid-template-columns:1fr}}
+.btn:focus-visible,.read-more:focus-visible,.mobile-menu-btn:focus-visible{outline:2px dashed var(--primary);outline-offset:2px}
+.btn:disabled{opacity:.6;cursor:not-allowed}

@@ -57,7 +57,7 @@
                     <li><a href="#contact">تماس با ما</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -268,11 +268,14 @@
             const mobileBtn = document.getElementById('mobileMenuBtn');
             const nav = document.getElementById('mainMenu');
             mobileBtn.addEventListener('click', () => {
+                const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+                mobileBtn.setAttribute('aria-expanded', String(!expanded));
                 nav.classList.toggle('show');
             });
             document.querySelectorAll('nav ul li a').forEach(link => {
                 link.addEventListener('click', () => {
                     nav.classList.remove('show');
+                    mobileBtn.setAttribute('aria-expanded','false');
                 });
             });
 

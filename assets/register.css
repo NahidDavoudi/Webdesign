@@ -6,5 +6,5 @@
 .register-info li{margin:6px 0}
 @media(max-width:900px){.register-container{grid-template-columns:1fr}}
 .back-link{margin-top:20px}
-.back-link a{color:#cdd7ee;text-decoration:none}
+.back-link a{color:var(--primary);text-decoration:none}
 .back-link a:hover{text-decoration:underline}
