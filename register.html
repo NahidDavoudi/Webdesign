@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./assets/register.css" />
 </head>
 <body>
+    <a href="#main" class="skip-to-content">رفتن به محتوای اصلی</a>
+    
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -21,11 +23,12 @@
             <nav>
                 <ul id="mainMenu">
                     <li><a href="index.html">خانه</a></li>
-                    <li><a href="register.html">ثبت نام</a></li>
+                    <li><a href="register.html" class="active">ثبت نام</a></li>
                     <li><a href="login.html">ورود</a></li>
                     <li><a href="index.html#courses">دوره‌ها</a></li>
                     <li><a href="index.html#instructors">اساتید</a></li>
                     <li><a href="index.html#features">خدمات</a></li>
+                    <li><a href="index.html#gallery">گالری</a></li>
                     <li><a href="index.html#contact">تماس با ما</a></li>
                 </ul>
             </nav>
@@ -36,6 +39,7 @@
     </header>
 
     <!-- Register Section -->
+    <main id="main">
     <section class="section" id="register">
         <div class="container">
             <div class="section-title">
@@ -47,14 +51,13 @@
                 <div class="register-form">
                     <form id="registrationForm">
                         <!-- اصلاح نام فیلدها -->
-                        <div class="form-group">
+                        <div class="form-group required">
                             <label for="full_name">نام و نام خانوادگی</label>
-                            <input type="text" id="full_name" name="full_name" required placeholder="نام و نام خانوادگی خود را وارد کنید">
+                            <input type="text" id="full_name" name="full_name" required placeholder="نام و نام خانوادگی خود را وارد کنید" autocomplete="name">
                         </div>
-                        <div class="form-group" style="direction: rtl;">
-                            <label for="phone_number" style="direction: rtl;">شماره تماس</label>
-                            <input type="tel" id="phone_number" name="phone_number" required placeholder="شماره تماس خود را وارد کنید"
-                                style="direction: rtl;">
+                        <div class="form-group required">
+                            <label for="phone_number">شماره تماس</label>
+                            <input type="tel" id="phone_number" name="phone_number" required placeholder="مثال: ۰۹۱۲ ۳۴۵ ۶۷۸۹" autocomplete="tel" dir="ltr">
                         </div>
                         
                         <div class="form-submit">
@@ -86,6 +89,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <script>
         const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -102,9 +106,97 @@
             });
         });
 
+        // Notification system
+        function showNotification(message, type = 'success') {
+            // Remove existing notifications
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notification => notification.remove());
+
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            // Hide notification after 4 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        // Form validation
+        function validateForm(form) {
+            const fullName = form.querySelector('#full_name');
+            const phoneNumber = form.querySelector('#phone_number');
+            let isValid = true;
+
+            // Clear previous errors
+            document.querySelectorAll('.form-error').forEach(error => error.remove());
+            document.querySelectorAll('.error').forEach(input => input.classList.remove('error'));
+
+            // Validate full name
+            if (!fullName.value.trim() || fullName.value.trim().length < 3) {
+                showFieldError(fullName, 'نام و نام خانوادگی باید حداقل ۳ کاراکتر باشد');
+                isValid = false;
+            }
+
+            // Validate phone number (Iranian mobile format)
+            const phoneRegex = /^09\d{9}$/;
+            if (!phoneRegex.test(phoneNumber.value.replace(/\s/g, ''))) {
+                showFieldError(phoneNumber, 'شماره موبایل باید با ۰۹ شروع شده و ۱۱ رقم باشد');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function showFieldError(input, message) {
+            input.classList.add('error');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error';
+            errorDiv.textContent = message;
+            input.parentNode.appendChild(errorDiv);
+        }
+
+        // Format phone number as user types
+        document.getElementById('phone_number').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length > 11) value = value.slice(0, 11); // Limit to 11 digits
+            
+            // Format as: 0912 345 6789
+            if (value.length > 4 && value.length <= 7) {
+                value = value.slice(0, 4) + ' ' + value.slice(4);
+            } else if (value.length > 7) {
+                value = value.slice(0, 4) + ' ' + value.slice(4, 7) + ' ' + value.slice(7);
+            }
+            
+            e.target.value = value;
+        });
+
         // Form submission handling
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            if (!validateForm(this)) {
+                return;
+            }
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
 
             const formData = new FormData(this);
 
@@ -115,17 +207,23 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.message) {
-                        alert(data.message);
-                        window.location.href = data.redirect || 'user_dashboard.php';
-=======
+                        showNotification(data.message, 'success');
                         this.reset();
+                        setTimeout(() => {
+                            window.location.href = data.redirect || 'user_dashboard.php';
+                        }, 1500);
                     } else if (data.detail) {
-                        alert(data.detail);
+                        showNotification(data.detail, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
+                    showNotification('مشکلی در برقراری ارتباط با سرور پیش آمد.', 'error');
+                })
+                .finally(() => {
+                    // Reset loading state
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
                 });
         });
     </script>

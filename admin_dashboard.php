@@ -26,6 +26,8 @@ $fullName = htmlspecialchars($_SESSION['full_name'] ?? 'ادمین', ENT_QUOTES,
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
+<a href="#main" class="skip-to-content">رفتن به محتوای اصلی</a>
+
 <header>
     <div class="container header-container">
         <div class="logo">
@@ -35,7 +37,9 @@ $fullName = htmlspecialchars($_SESSION['full_name'] ?? 'ادمین', ENT_QUOTES,
         <nav>
             <ul id="mainMenu">
                 <li><a href="index.html">خانه</a></li>
-                <li><a href="#">پنل مدیریت</a></li>
+                <li><a href="#" class="active">پنل مدیریت</a></li>
+                <li><a href="index.html#courses">دوره‌ها</a></li>
+                <li><a href="index.html#contact">تماس با ما</a></li>
                 <li><a href="#" id="logoutBtn">خروج</a></li>
             </ul>
         </nav>
@@ -44,16 +48,125 @@ $fullName = htmlspecialchars($_SESSION['full_name'] ?? 'ادمین', ENT_QUOTES,
         </button>
     </div>
 </header>
-<main class="section">
+<main id="main" class="section">
     <div class="container">
+        <!-- Admin Header -->
         <div class="card">
-            <h2>سلام، <?php echo $fullName; ?>!</h2>
-            <p>این بخش برای مدیریت کاربران و درخواست‌های ثبت‌نام است.</p>
-            <ul>
-                <li>نمایش لیست کاربران جدید</li>
-                <li>جستجوی کاربر بر اساس شماره تماس</li>
-                <li>خروجی اکسل (در نسخه‌های بعدی)</li>
-            </ul>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                <div style="width: 60px; height: 60px; background: var(--danger); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div>
+                    <h2 style="margin: 0;">سلام، <?php echo $fullName; ?>!</h2>
+                    <p style="margin: 4px 0 0 0; color: var(--muted);">مدیر آموزشگاه فامو</p>
+                </div>
+            </div>
+            <p>پنل مدیریت آموزشگاه - مدیریت کاربران و درخواست‌های ثبت‌نام</p>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="grid grid-4 mt-4">
+            <div class="card text-center">
+                <div style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 2rem; color: var(--primary);">۲۳</h3>
+                <p style="margin: 4px 0 0 0; color: var(--muted);">کاربر فعال</p>
+            </div>
+            <div class="card text-center">
+                <div style="font-size: 2rem; color: var(--success); margin-bottom: 8px;">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 2rem; color: var(--success);">۵</h3>
+                <p style="margin: 4px 0 0 0; color: var(--muted);">درخواست جدید</p>
+            </div>
+            <div class="card text-center">
+                <div style="font-size: 2rem; color: var(--warning); margin-bottom: 8px;">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 2rem; color: var(--warning);">۳</h3>
+                <p style="margin: 4px 0 0 0; color: var(--muted);">دوره فعال</p>
+            </div>
+            <div class="card text-center">
+                <div style="font-size: 2rem; color: var(--danger); margin-bottom: 8px;">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 style="margin: 0; font-size: 2rem; color: var(--danger);">۸</h3>
+                <p style="margin: 4px 0 0 0; color: var(--muted);">استاد برجسته</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="grid grid-2 mt-4">
+            <div class="card">
+                <h3 style="margin-top: 0;">مدیریت کاربران</h3>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <button class="btn" style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-eye"></i>
+                        مشاهده کاربران جدید
+                    </button>
+                    <button class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-search"></i>
+                        جستجوی کاربر
+                    </button>
+                    <button class="btn" style="background: var(--success); display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-file-excel"></i>
+                        خروجی اکسل
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top: 0;">گزارش‌ها</h3>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <button class="btn" style="background: var(--warning); display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-chart-bar"></i>
+                        آمار ثبت‌نام‌ها
+                    </button>
+                    <button class="btn" style="background: #6366f1; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-calendar-alt"></i>
+                        گزارش ماهانه
+                    </button>
+                    <button class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-print"></i>
+                        چاپ گزارش
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card mt-4">
+            <h3>فعالیت‌های اخیر</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: var(--radius);">
+                    <div style="width: 40px; height: 40px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-weight: 600;">کاربر جدید ثبت‌نام کرد</p>
+                        <p style="margin: 0; color: var(--muted); font-size: 0.9rem;">علی محمدی - ۲ دقیقه پیش</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: var(--radius);">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-weight: 600;">تماس با کاربر انجام شد</p>
+                        <p style="margin: 0; color: var(--muted); font-size: 0.9rem;">فاطمه احمدی - ۱۵ دقیقه پیش</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: var(--radius);">
+                    <div style="width: 40px; height: 40px; background: var(--warning); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <p style="margin: 0; font-weight: 600;">اطلاعات دوره به‌روزرسانی شد</p>
+                        <p style="margin: 0; color: var(--muted); font-size: 0.9rem;">دوره ریاضی - ۱ ساعت پیش</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

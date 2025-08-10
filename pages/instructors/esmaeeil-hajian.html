@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>دکتر اسماعیل حاجیان | اساتید | فامو</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+<body>
+<a href="#main" class="skip-to-content">رفتن به محتوای اصلی</a>
+
+<header>
+  <div class="container header-container">
+    <div class="logo">
+      <a href="../../index.html"><img src="../../logo.png" alt="فامو"></a>
+      <h1>فامو <span>آکادمی</span></h1>
+    </div>
+    <nav>
+      <ul id="mainMenu">
+        <li><a href="../../index.html">خانه</a></li>
+        <li><a href="../../register.html">ثبت نام</a></li>
+        <li><a href="../../login.html">ورود</a></li>
+        <li><a href="../../index.html#courses">دوره‌ها</a></li>
+        <li><a href="../../index.html#instructors">اساتید</a></li>
+        <li><a href="../../index.html#contact">تماس با ما</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main id="main" class="section">
+  <div class="container">
+    <div class="card">
+      <img class="image-cover" src="https://images.unsplash.com/photo-1554774853-b415df9eeb92?q=80&w=1600&auto=format&fit=crop" alt="دکتر اسماعیل حاجیان" />
+      <h2 class="mt-2">دکتر اسماعیل حاجیان</h2>
+      <p class="teaser">مدرس فیزیک با تمرکز بر یادگیری مفهومی و کاربردی</p>
+      
+      <h3>مسیر و تخصص</h3>
+      <p>دکتری فیزیک نظری با بیش از ۸ سال تجربه تدریس در دبیرستان‌ها و آموزشگاه‌های معتبر. تخصص در آموزش فیزیک کنکور و المپیاد با رویکرد حل مسئله.</p>
+      
+      <h3>روش تدریس</h3>
+      <p>تدریس فیزیک با استفاده از مثال‌های واقعی و آزمایش‌های ساده، تمرین‌های سطح‌بندی شده از پایه تا پیشرفته و تکنیک‌های حفظ فرمول‌ها.</p>
+      
+      <h3>حوزه‌های تخصصی</h3>
+      <ul>
+        <li>مکانیک کلاسیک و حرکت</li>
+        <li>الکتریسیته و مغناطیس</li>
+        <li>نور و امواج</li>
+        <li>فیزیک مدرن و کوانتوم</li>
+      </ul>
+      
+      <h3>افتخارات</h3>
+      <ul>
+        <li>مدرس برگزیده آموزشگاه‌های کنکور مازندران</li>
+        <li>نویسنده کتاب «فیزیک کنکور به زبان ساده»</li>
+        <li>مشاور علمی المپیاد فیزیک استان</li>
+      </ul>
+      
+      <div class="mt-3">
+        <a class="btn" href="../../register.html">ثبت نام در دوره فیزیک</a>
+        <a class="btn btn-secondary" href="../../index.html#instructors">بازگشت</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+const mobileBtn=document.getElementById('mobileMenuBtn');
+const nav=document.getElementById('mainMenu');
+mobileBtn?.addEventListener('click',()=>nav.classList.toggle('show'));
+document.querySelectorAll('nav ul li a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('show')));
+</script>
+</body>
+</html>
