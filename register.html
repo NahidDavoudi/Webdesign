@@ -29,7 +29,7 @@
                     <li><a href="index.html#contact">تماس با ما</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -53,13 +53,13 @@
                         </div>
                         <div class="form-group" style="direction: rtl;">
                             <label for="phone_number" style="direction: rtl;">شماره تماس</label>
-                            <input type="tel" id="phone_number" name="phone_number" required placeholder="شماره تماس خود را وارد کنید"
-                                style="direction: rtl;">
+                            <input type="tel" id="phone_number" name="phone_number" required placeholder="شماره تماس خود را وارد کنید" style="direction: rtl;" pattern="09[0-9]{9}" inputmode="tel">
                         </div>
                         
                         <div class="form-submit">
                             <button type="submit" class="btn">ارسال درخواست ثبت نام</button>
                         </div>
+                        <div id="formFeedback" class="alert" role="alert" style="display:none"></div>
                     </form>
                 </div>
                 
@@ -79,8 +79,6 @@
                 </div>
             </div>
             
-            </div>
-            
             <div class="back-link">
                 <a href="index.html"><i class="fas fa-arrow-left"></i> بازگشت به صفحه اصلی</a>
             </div>
@@ -88,45 +86,55 @@
     </section>
 
     <script>
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const nav = document.getElementById('mainMenu');
-        
-        mobileBtn.addEventListener('click', () => {
-            nav.classList.toggle('show');
-        });
-        
-        // Close menu when clicking on links
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('show');
-            });
-        });
-
-        // Form submission handling
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-
-            fetch('register.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        alert(data.message);
-                        window.location.href = data.redirect || 'user_dashboard.php';
-=======
-                        this.reset();
-                    } else if (data.detail) {
-                        alert(data.detail);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu ---
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const nav = document.getElementById('mainMenu');
+            const toggleMenu = () => {
+                const expanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+                mobileBtn.setAttribute('aria-expanded', String(!expanded));
+                nav.classList.toggle('show');
+            };
+            mobileBtn.addEventListener('click', toggleMenu);
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('show');
+                    mobileBtn.setAttribute('aria-expanded', 'false');
                 });
+            });
+
+            // --- Registration Form ---
+            const form = document.getElementById('registrationForm');
+            const feedback = document.getElementById('formFeedback');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                feedback.style.display = 'none';
+                feedback.className = 'alert';
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'در حال ارسال...';
+                try {
+                    const res = await fetch('register.php', {method: 'POST', body: new FormData(form)});
+                    const data = await res.json();
+                    if (data.message) {
+                        feedback.textContent = data.message;
+                        feedback.classList.add('alert-success');
+                        feedback.style.display = 'block';
+                        form.reset();
+                        setTimeout(() => { window.location.href = data.redirect || 'user_dashboard.php'; }, 1200);
+                    } else {
+                        throw new Error(data.detail || 'خطای نامشخص');
+                    }
+                } catch (err) {
+                    feedback.textContent = err.message || 'مشکلی در برقراری ارتباط با سرور پیش آمد.';
+                    feedback.classList.add('alert-error');
+                    feedback.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
         });
     </script>
 </body>
