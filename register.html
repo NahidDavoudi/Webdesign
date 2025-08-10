@@ -5,28 +5,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ثبت نام | آموزشگاه فامو بابل</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" />
+    <meta name="description" content="ثبت نام در آموزشگاه فامو - بهترین آموزشگاه کنکور و تیزهوشان در بابل">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./logo.png">
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="./assets/register.css" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
-    <!-- Header -->
+    <!-- Modern Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <a href="#"><img src="./logo.png" alt="لوگوی آموزشگاه فامو"></a>
+                <a href="index.html"><img src="./logo.png" alt="لوگوی آموزشگاه فامو"></a>
                 <h1>فامو <span>آکادمی</span></h1>
             </div>
             <nav>
                 <ul id="mainMenu">
-                    <li><a href="index.html">خانه</a></li>
-                    <li><a href="register.html">ثبت نام</a></li>
-                    <li><a href="login.html">ورود</a></li>
-                    <li><a href="index.html#courses">دوره‌ها</a></li>
-                    <li><a href="index.html#instructors">اساتید</a></li>
-                    <li><a href="index.html#features">خدمات</a></li>
-                    <li><a href="index.html#contact">تماس با ما</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> خانه</a></li>
+                    <li><a href="register.html" class="active"><i class="fas fa-user-plus"></i> ثبت نام</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> ورود</a></li>
+                    <li><a href="index.html#courses"><i class="fas fa-book"></i> دوره‌ها</a></li>
+                    <li><a href="index.html#instructors"><i class="fas fa-chalkboard-teacher"></i> اساتید</a></li>
+                    <li><a href="index.html#features"><i class="fas fa-star"></i> خدمات</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-phone"></i> تماس با ما</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
@@ -35,99 +41,895 @@
         </div>
     </header>
 
-    <!-- Register Section -->
-    <section class="section" id="register">
-        <div class="container">
-            <div class="section-title">
-                <h2>ثبت نام در دوره‌های آموزشگاه فامو</h2>
-                <p>فرم زیر را با دقت پر کنید تا همکاران ما در اولین فرصت با شما تماس بگیرند</p>
-            </div>
-            
-            <div class="register-container">
-                <div class="register-form">
-                    <form id="registrationForm">
-                        <!-- اصلاح نام فیلدها -->
-                        <div class="form-group">
-                            <label for="full_name">نام و نام خانوادگی</label>
-                            <input type="text" id="full_name" name="full_name" required placeholder="نام و نام خانوادگی خود را وارد کنید">
+    <main>
+        <!-- Enhanced Registration Section -->
+        <section class="auth-section reveal fade-up">
+            <div class="container">
+                <div class="registration-container">
+                    <!-- Welcome Side -->
+                    <div class="auth-welcome">
+                        <div class="welcome-content">
+                            <div class="welcome-icon floating">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h2>شروع سفر موفقیت!</h2>
+                            <p>به جمع هزاران دانش‌آموز موفق بپیوندید</p>
+                            
+                            <div class="stats-mini">
+                                <div class="stat-mini">
+                                    <div class="stat-number">2500+</div>
+                                    <div class="stat-label">دانش‌آموز موفق</div>
+                                </div>
+                                <div class="stat-mini">
+                                    <div class="stat-number">98%</div>
+                                    <div class="stat-label">رضایت والدین</div>
+                                </div>
+                                <div class="stat-mini">
+                                    <div class="stat-number">15</div>
+                                    <div class="stat-label">سال تجربه</div>
+                                </div>
+                            </div>
+
+                            <div class="benefits">
+                                <div class="benefit-item">
+                                    <i class="fas fa-gift"></i>
+                                    <span>مشاوره رایگان اولیه</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-medal"></i>
+                                    <span>تضمین کیفیت آموزش</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-support"></i>
+                                    <span>پشتیبانی 24 ساعته</span>
+                                </div>
+                            </div>
+                            
+                            <div class="auth-switch">
+                                <p>قبلاً ثبت نام کرده‌اید؟</p>
+                                <a href="login.html" class="btn btn-secondary">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    وارد شوید
+                                </a>
+                            </div>
                         </div>
-                        <div class="form-group" style="direction: rtl;">
-                            <label for="phone_number" style="direction: rtl;">شماره تماس</label>
-                            <input type="tel" id="phone_number" name="phone_number" required placeholder="شماره تماس خود را وارد کنید"
-                                style="direction: rtl;">
+                    </div>
+
+                    <!-- Registration Form Side -->
+                    <div class="auth-form-container">
+                        <div class="auth-form card">
+                            <div class="form-header">
+                                <h2>ثبت نام در آموزشگاه فامو</h2>
+                                <p>فرم زیر را با دقت پر کنید تا با شما تماس بگیریم</p>
+                            </div>
+
+                            <!-- Progress Steps -->
+                            <div class="progress-steps">
+                                <div class="step active">
+                                    <div class="step-number">1</div>
+                                    <span>اطلاعات شخصی</span>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <span>اطلاعات تحصیلی</span>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <span>تأیید</span>
+                                </div>
+                            </div>
+
+                            <form id="registrationForm" class="modern-form multi-step">
+                                <!-- Step 1: Personal Information -->
+                                <div class="form-step active" data-step="1">
+                                    <div class="form-group">
+                                        <label for="full_name">
+                                            <i class="fas fa-user"></i>
+                                            نام و نام خانوادگی
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            id="full_name" 
+                                            name="full_name" 
+                                            required 
+                                            placeholder="مثال: علی احمدی"
+                                            class="form-input"
+                                        >
+                                        <div class="input-border"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone_number">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            شماره موبایل
+                                        </label>
+                                        <input 
+                                            type="tel" 
+                                            id="phone_number" 
+                                            name="phone_number" 
+                                            required 
+                                            placeholder="09123456789"
+                                            autocomplete="tel"
+                                            class="form-input"
+                                        >
+                                        <div class="input-border"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="parent_phone">
+                                            <i class="fas fa-phone"></i>
+                                            شماره موبایل والدین
+                                        </label>
+                                        <input 
+                                            type="tel" 
+                                            id="parent_phone" 
+                                            name="parent_phone" 
+                                            required 
+                                            placeholder="09123456789"
+                                            class="form-input"
+                                        >
+                                        <div class="input-border"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="birth_year">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            سال تولد
+                                        </label>
+                                        <select id="birth_year" name="birth_year" required class="form-input">
+                                            <option value="">انتخاب کنید</option>
+                                            <!-- Years will be populated by JavaScript -->
+                                        </select>
+                                        <div class="input-border"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Academic Information -->
+                                <div class="form-step" data-step="2">
+                                    <div class="form-group">
+                                        <label for="field">
+                                            <i class="fas fa-graduation-cap"></i>
+                                            رشته تحصیلی
+                                        </label>
+                                        <select id="field" name="field" required class="form-input">
+                                            <option value="">انتخاب کنید</option>
+                                            <option value="experimental">علوم تجربی</option>
+                                            <option value="mathematics">ریاضی فیزیک</option>
+                                            <option value="humanities">علوم انسانی</option>
+                                            <option value="art">هنر</option>
+                                        </select>
+                                        <div class="input-border"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="grade">
+                                            <i class="fas fa-layer-group"></i>
+                                            پایه تحصیلی
+                                        </label>
+                                        <select id="grade" name="grade" required class="form-input">
+                                            <option value="">انتخاب کنید</option>
+                                            <option value="9">نهم</option>
+                                            <option value="10">دهم</option>
+                                            <option value="11">یازدهم</option>
+                                            <option value="12">دوازدهم</option>
+                                            <option value="konkor">فارغ‌التحصیل (کنکوری)</option>
+                                        </select>
+                                        <div class="input-border"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="school_name">
+                                            <i class="fas fa-school"></i>
+                                            نام مدرسه (اختیاری)
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            id="school_name" 
+                                            name="school_name" 
+                                            placeholder="نام مدرسه فعلی خود را وارد کنید"
+                                            class="form-input"
+                                        >
+                                        <div class="input-border"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="goal">
+                                            <i class="fas fa-target"></i>
+                                            هدف از ثبت نام
+                                        </label>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-option">
+                                                <input type="checkbox" name="goals[]" value="konkor">
+                                                <span class="checkmark-option"></span>
+                                                <span>آمادگی کنکور</span>
+                                            </label>
+                                            <label class="checkbox-option">
+                                                <input type="checkbox" name="goals[]" value="tizhooshan">
+                                                <span class="checkmark-option"></span>
+                                                <span>آزمون تیزهوشان</span>
+                                            </label>
+                                            <label class="checkbox-option">
+                                                <input type="checkbox" name="goals[]" value="school_help">
+                                                <span class="checkmark-option"></span>
+                                                <span>تقویت دروس مدرسه</span>
+                                            </label>
+                                            <label class="checkbox-option">
+                                                <input type="checkbox" name="goals[]" value="consultation">
+                                                <span class="checkmark-option"></span>
+                                                <span>مشاوره تحصیلی</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Confirmation -->
+                                <div class="form-step" data-step="3">
+                                    <div class="confirmation-summary">
+                                        <h3>خلاصه اطلاعات شما</h3>
+                                        <div class="summary-card">
+                                            <div class="summary-item">
+                                                <span class="label">نام:</span>
+                                                <span class="value" id="summary-name">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="label">شماره موبایل:</span>
+                                                <span class="value" id="summary-phone">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="label">رشته:</span>
+                                                <span class="value" id="summary-field">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="label">پایه:</span>
+                                                <span class="value" id="summary-grade">-</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="terms-section">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" id="terms" name="terms" required>
+                                            <span class="checkmark"></span>
+                                            <span class="checkbox-label">
+                                                با <a href="#" class="terms-link">قوانین و مقررات</a> آموزشگاه موافقم
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="privacy-note">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <p>اطلاعات شما محفوظ و امن نگهداری می‌شود</p>
+                                    </div>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <div class="form-navigation">
+                                    <button type="button" id="prevBtn" class="btn btn-secondary" style="display: none;">
+                                        <i class="fas fa-arrow-right"></i>
+                                        قبلی
+                                    </button>
+                                    <button type="button" id="nextBtn" class="btn btn-primary">
+                                        بعدی
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <button type="submit" id="submitBtn" class="btn btn-primary" style="display: none;">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>ثبت نام</span>
+                                        <div class="btn-loading">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- Success/Error Messages -->
+                            <div id="message-container" class="message-container">
+                                <!-- Messages will be inserted here -->
+                            </div>
                         </div>
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="btn">ارسال درخواست ثبت نام</button>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="register-info">
-                    <h3>مزایای ثبت نام در آموزشگاه فامو</h3>
-                    <p>با ثبت نام در آموزشگاه فامو از خدمات ویژه ما بهره‌مند شوید:</p>
-                    
-                    <ul>
-                        <li>برنامه‌ریزی شخصی‌سازی شده برای هر دانش‌آموز</li>
-                        <li>آزمون‌های منظم و تحلیل پیشرفت تحصیلی</li>
-                        <li>کلاس‌های رفع اشکال تک‌تک دروس</li>
-                        <li>پشتیبانی ۲۴ ساعته درسی</li>
-                    </ul>
-                    <div class="back-link" style="margin-top:12px">
-                        <a href="login.html"><i class="fas fa-right-to-bracket"></i> قبلاً ثبت‌نام کرده‌اید؟ ورود</a>
                     </div>
                 </div>
             </div>
-            
+        </section>
+    </main>
+
+    <!-- Modern Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="./logo.png" alt="لوگوی آموزشگاه فامو">
+                        <h3>آموزشگاه فامو</h3>
+                    </div>
+                    <p>مشاوره تخصصی و آموزش مفهومی برای کنکور و تیزهوشان</p>
+                </div>
+                <div class="footer-section">
+                    <h4>دسترسی سریع</h4>
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <li><a href="login.html">ورود</a></li>
+                        <li><a href="index.html#contact">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ارتباط با ما</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>0901-440-2300</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@famoacademy.ir</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="back-link">
-                <a href="index.html"><i class="fas fa-arrow-left"></i> بازگشت به صفحه اصلی</a>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>© <span id="copyright-year"></span> آموزشگاه فامو - تمامی حقوق محفوظ است</p>
+                </div>
             </div>
         </div>
-    </section>
+    </footer>
 
+    <!-- Scripts -->
+    <script src="./assets/modern.js"></script>
     <script>
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const nav = document.getElementById('mainMenu');
-        
-        mobileBtn.addEventListener('click', () => {
-            nav.classList.toggle('show');
+        // Multi-step form logic
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        // Populate birth years
+        function populateBirthYears() {
+            const select = document.getElementById('birth_year');
+            const currentYear = new Date().getFullYear();
+            for (let year = currentYear - 12; year >= currentYear - 25; year--) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                select.appendChild(option);
+            }
+        }
+
+        // Show specific step
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            document.querySelector(`.step:nth-child(${step})`).classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').style.display = step > 1 ? 'block' : 'none';
+            document.getElementById('nextBtn').style.display = step < totalSteps ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = step === totalSteps ? 'block' : 'none';
+            
+            // Update summary on last step
+            if (step === 3) {
+                updateSummary();
+            }
+        }
+
+        // Validate current step
+        function validateStep(step) {
+            const stepElement = document.querySelector(`[data-step="${step}"]`);
+            const requiredFields = stepElement.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            // Special validation for phone numbers
+            if (step === 1) {
+                const phoneFields = ['phone_number', 'parent_phone'];
+                phoneFields.forEach(fieldName => {
+                    const field = document.getElementById(fieldName);
+                    if (field.value && !/^09\d{9}$/.test(field.value)) {
+                        field.classList.add('error');
+                        isValid = false;
+                        showMessage('شماره موبایل معتبر نیست', 'error');
+                    }
+                });
+            }
+
+            // Validate goals selection in step 2
+            if (step === 2) {
+                const goals = document.querySelectorAll('input[name="goals[]"]:checked');
+                if (goals.length === 0) {
+                    showMessage('لطفاً حداقل یک هدف انتخاب کنید', 'error');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // Update summary
+        function updateSummary() {
+            document.getElementById('summary-name').textContent = 
+                document.getElementById('full_name').value || '-';
+            document.getElementById('summary-phone').textContent = 
+                document.getElementById('phone_number').value || '-';
+            
+            const fieldSelect = document.getElementById('field');
+            document.getElementById('summary-field').textContent = 
+                fieldSelect.options[fieldSelect.selectedIndex]?.text || '-';
+            
+            const gradeSelect = document.getElementById('grade');
+            document.getElementById('summary-grade').textContent = 
+                gradeSelect.options[gradeSelect.selectedIndex]?.text || '-';
+        }
+
+        // Next button handler
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            }
         });
-        
-        // Close menu when clicking on links
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('show');
+
+        // Previous button handler
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateStep(currentStep)) {
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('span');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            btnText.style.opacity = '0';
+            btnLoading.style.opacity = '1';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button state
+                submitBtn.classList.remove('loading');
+                btnText.style.opacity = '1';
+                btnLoading.style.opacity = '0';
+                submitBtn.disabled = false;
+                
+                // Show success message
+                showMessage('ثبت نام شما با موفقیت انجام شد! به زودی با شما تماس خواهیم گرفت.', 'success');
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    currentStep = 1;
+                    showStep(currentStep);
+                }, 3000);
+            }, 2000);
+        });
+
+        // Show message function
+        function showMessage(text, type) {
+            const container = document.getElementById('message-container');
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${text}</span>
+            `;
+            
+            container.innerHTML = '';
+            container.appendChild(message);
+            
+            setTimeout(() => {
+                message.classList.add('show');
+            }, 100);
+            
+            if (type === 'error') {
+                setTimeout(() => {
+                    message.classList.remove('show');
+                    setTimeout(() => {
+                        if (message.parentNode) {
+                            message.parentNode.removeChild(message);
+                        }
+                    }, 300);
+                }, 5000);
+            }
+        }
+
+        // Input focus effects
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+                this.classList.remove('error');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                this.parentElement.classList.toggle('has-value', this.value !== '');
+                this.classList.remove('error');
             });
         });
 
-        // Form submission handling
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-
-            fetch('register.php', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        alert(data.message);
-                        window.location.href = data.redirect || 'user_dashboard.php';
-=======
-                        this.reset();
-                    } else if (data.detail) {
-                        alert(data.detail);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('مشکلی در برقراری ارتباط با سرور پیش آمد.');
-                });
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            populateBirthYears();
+            showStep(1);
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
         });
     </script>
+
+    <!-- Registration Page Specific Styles -->
+    <style>
+        .registration-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-mini {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-mini {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-glass);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .benefits {
+            margin: 2rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-glass);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-normal);
+        }
+
+        .benefit-item:hover {
+            background: var(--bg-glass-hover);
+            transform: translateX(-5px);
+        }
+
+        .benefit-item i {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20%;
+            width: 60%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: var(--transition-normal);
+        }
+
+        .step.active .step-number {
+            background: var(--gradient-primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .step span {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            transition: var(--transition-normal);
+        }
+
+        .step.active span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .multi-step .form-step {
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .multi-step .form-step.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            padding: 1rem;
+            background: var(--bg-glass);
+            border-radius: var(--radius-md);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-normal);
+        }
+
+        .checkbox-option:hover {
+            background: var(--bg-glass-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .checkbox-option input {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .checkmark-option {
+            width: 20px;
+            height: 20px;
+            background: var(--bg-glass);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-sm);
+            position: relative;
+            transition: var(--transition-fast);
+        }
+
+        .checkbox-option input:checked + .checkmark-option {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkmark-option::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+
+        .checkbox-option input:checked + .checkmark-option::after {
+            opacity: 1;
+        }
+
+        .checkbox-option input:checked ~ span {
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .confirmation-summary h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .summary-card {
+            background: var(--bg-glass);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-item .label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .summary-item .value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .terms-section {
+            margin: 2rem 0;
+        }
+
+        .terms-link {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .terms-link:hover {
+            text-decoration: underline;
+        }
+
+        .privacy-note {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+            color: var(--success);
+            margin-bottom: 2rem;
+        }
+
+        .form-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .form-navigation .btn {
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .form-input.error {
+            border-color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .form-input.error:focus {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .registration-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .auth-welcome {
+                order: 2;
+            }
+
+            .auth-form-container {
+                order: 1;
+            }
+
+            .stats-mini {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .progress-steps {
+                margin-bottom: 1.5rem;
+            }
+
+            .step span {
+                display: none;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+            }
+
+            .form-navigation .btn {
+                max-width: none;
+            }
+
+            .stats-mini {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-form {
+                padding: 1.5rem 1rem;
+            }
+
+            .summary-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+        }
+    </style>
 </body>
 </html>
