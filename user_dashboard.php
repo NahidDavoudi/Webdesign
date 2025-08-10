@@ -29,18 +29,21 @@ $fullName = htmlspecialchars($_SESSION['full_name'] ?? 'کاربر', ENT_QUOTES,
 <header>
     <div class="container header-container">
         <div class="logo">
-            <a href="#"><img src="./logo.png" alt="لوگوی آموزشگاه فامو"></a>
-            <h1>فامو <span>آکادمی</span></h1>
+            <a href="index.html" aria-label="بازگشت به صفحه اصلی">
+                <img src="./logo.png" alt="لوگوی آموزشگاه فامو" width="48" height="48">
+                <h1>فامو <span>آکادمی</span></h1>
+            </a>
         </div>
-        <nav>
-            <ul id="mainMenu">
-                <li><a href="index.html">خانه</a></li>
-                <li><a href="#">داشبورد</a></li>
-                <li><a href="#" id="logoutBtn">خروج</a></li>
+        <nav aria-label="منوی کاربری">
+            <ul id="mainMenu" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">خانه</a></li>
+                <li role="none"><a href="#" role="menuitem" aria-current="page">داشبورد</a></li>
+                <li role="none"><a href="#" id="logoutBtn" role="menuitem">خروج</a></li>
             </ul>
         </nav>
-        <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
+        <button class="mobile-menu-btn" aria-label="باز کردن منوی موبایل" aria-expanded="false" aria-controls="mainMenu" id="mobileMenuBtn">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+            <span class="sr-only">منو</span>
         </button>
     </div>
 </header>
@@ -49,25 +52,69 @@ $fullName = htmlspecialchars($_SESSION['full_name'] ?? 'کاربر', ENT_QUOTES,
         <div class="card">
             <h2>خوش آمدید، <?php echo $fullName; ?>!</h2>
             <p>ثبت‌نام شما با موفقیت انجام شده است. به زودی با شما تماس گرفته خواهد شد.</p>
-            <div style="margin-top:12px;">
-                <a class="btn" href="index.html#courses">مشاهده دوره‌ها</a>
-                <a class="btn btn-secondary" href="index.html#contact">تماس با ما</a>
+            <div style="margin-top:var(--spacing-lg);">
+                <a class="btn" href="index.html#courses" aria-label="مشاهده دوره‌های آموزشی">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    مشاهده دوره‌ها
+                </a>
+                <a class="btn btn-secondary" href="index.html#contact" aria-label="تماس با آموزشگاه">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                    تماس با ما
+                </a>
             </div>
         </div>
     </div>
 </main>
 <script>
-const mobileBtn = document.getElementById('mobileMenuBtn');
-const nav = document.getElementById('mainMenu');
-mobileBtn?.addEventListener('click', () => nav.classList.toggle('show'));
-document.querySelectorAll('nav ul li a').forEach(link => link.addEventListener('click', () => nav.classList.remove('show')));
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('mainMenu');
+    
+    if (mobileBtn && nav) {
+        mobileBtn.addEventListener('click', () => {
+            const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+            mobileBtn.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('show');
+            
+            const newLabel = isExpanded ? 'باز کردن منوی موبایل' : 'بستن منوی موبایل';
+            mobileBtn.setAttribute('aria-label', newLabel);
+        });
+        
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('show');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileBtn.setAttribute('aria-label', 'باز کردن منوی موبایل');
+            });
+        });
+    }
 
-document.getElementById('logoutBtn').addEventListener('click', async (e) => {
-    e.preventDefault();
-    try {
-        await fetch('logout.php', { method: 'POST', credentials: 'same-origin' });
-        window.location.href = 'index.html';
-    } catch {}
+    // Logout functionality
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            if (confirm('آیا مطمئن هستید که می‌خواهید خارج شوید؟')) {
+                try {
+                    const response = await fetch('logout.php', { 
+                        method: 'POST', 
+                        credentials: 'same-origin' 
+                    });
+                    
+                    if (response.ok) {
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('خطا در خروج از سیستم');
+                    }
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    alert('خطا در برقراری ارتباط با سرور');
+                }
+            }
+        });
+    }
 });
 </script>
 </body>
