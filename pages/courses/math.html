@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="../../assets/style.css" />
 </head>
 <body>
+<a href="#main" class="skip-to-content">رفتن به محتوای اصلی</a>
+
 <header>
   <div class="container header-container">
     <div class="logo">
@@ -17,7 +19,12 @@
     </div>
     <nav>
       <ul id="mainMenu">
-        <li><a href="../../index.html#courses">بازگشت به دوره‌ها</a></li>
+        <li><a href="../../index.html">خانه</a></li>
+        <li><a href="../../register.html">ثبت نام</a></li>
+        <li><a href="../../login.html">ورود</a></li>
+        <li><a href="../../index.html#courses" class="active">دوره‌ها</a></li>
+        <li><a href="../../index.html#instructors">اساتید</a></li>
+        <li><a href="../../index.html#contact">تماس با ما</a></li>
       </ul>
     </nav>
     <button class="mobile-menu-btn" aria-label="منوی موبایل" id="mobileMenuBtn">
@@ -25,11 +32,11 @@
     </button>
   </div>
 </header>
-<main class="section">
+<main id="main" class="section">
   <div class="container">
     <div class="card">
       <img class="image-cover" src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1600&auto=format&fit=crop" alt="ریاضی فیزیک" />
-      <h2 style="margin-top:12px">دوره ریاضی فیزیک</h2>
+      <h2 class="mt-2">دوره ریاضی فیزیک</h2>
       <p class="teaser">ترکیب آموزش مفهومی و تمرین‌های زمان‌بندی‌شده برای تسلط کامل</p>
       <h3>آنچه یاد می‌گیرید</h3>
       <ul>
@@ -39,7 +46,7 @@
       </ul>
       <h3>مدت و شهریه</h3>
       <p>۱۲ هفته؛ ترم: ۳,۰۰۰,۰۰۰ تومان</p>
-      <div style="margin-top:16px">
+      <div class="mt-3">
         <a class="btn" href="../../register.html">ثبت نام</a>
         <a class="btn btn-secondary" href="../../index.html#courses">بازگشت</a>
       </div>
